@@ -8,13 +8,47 @@ class Encrypt extends Command {
     try {
       const {flags} = this.parse(Encrypt)
 
+      // Validate the input arguments are valid before doing any processing.
       this.validateFlags(flags)
 
-      const name = flags.name || 'world'
-      this.log(`hello ${name} from ./src/commands/hello.js`)
+      // Encrypt the file.
+      await this.encryptFile(flags)
     } catch (error) {
       if (error.message) this.log(error.message)
       else console.log('Error in UpdateBalances.run: ', error)
+    }
+  }
+
+  // Encrypt a file based on the data passed in with the flags.
+  async encryptFile(flags) {
+    try {
+      await this.openFile(flags.name)
+    } catch (error) {
+      console.log('Error in encrypt.js/encryptFile()')
+      throw error
+    }
+  }
+
+  // Read in a file and return the contents.
+  async openFile(filename) {
+    try {
+
+    } catch (error) {
+      console.log('Error in encrypt.js/openFile()')
+      throw error
+    }
+  }
+
+  // Encrypt and return some data.
+  encrypt(data) {
+    try {
+      var cipher = crypto.createCipher('aes-256-cbc', ENCRYPTION_PASSWORD)
+      var crypted = cipher.update(data, 'utf8', 'hex')
+      crypted += cipher.final('hex')
+      return crypted
+    } catch (error) {
+      console.log('Error in encrypt.js/encrypt()')
+      throw error
     }
   }
 
