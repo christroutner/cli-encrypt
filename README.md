@@ -30,9 +30,29 @@ USAGE
 <!-- usagestop -->
 # Commands
 <!-- commands -->
+* [`cli-encrypt decrypt`](#cli-encrypt-decrypt)
 * [`cli-encrypt encrypt`](#cli-encrypt-encrypt)
 * [`cli-encrypt hello`](#cli-encrypt-hello)
 * [`cli-encrypt help [COMMAND]`](#cli-encrypt-help-command)
+
+## `cli-encrypt decrypt`
+
+Describe the command here
+
+```
+USAGE
+  $ cli-encrypt decrypt
+
+OPTIONS
+  -n, --name=name  name to print
+  -p, --pass=pass  encryption password
+
+DESCRIPTION
+  ...
+  Extra documentation goes here
+```
+
+_See code: [src/commands/decrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.0.0/src/commands/decrypt.js)_
 
 ## `cli-encrypt encrypt`
 
