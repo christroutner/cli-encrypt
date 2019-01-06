@@ -5,6 +5,8 @@ Simple CLI for encrypting files using node.js Crypto library.
 
 *Primary Use Case*: Quickly and easily encrypting and decrypting text files.
 
+[NPM package](https://www.npmjs.com/package/cli-encrypt)
+
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/cli-encrypt.svg)](https://npmjs.org/package/cli-encrypt)
 [![Downloads/week](https://img.shields.io/npm/dw/cli-encrypt.svg)](https://npmjs.org/package/cli-encrypt)
