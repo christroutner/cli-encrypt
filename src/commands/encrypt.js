@@ -23,13 +23,16 @@ class Encrypt extends Command {
   // Encrypt a file based on the data passed in with the flags.
   async encryptFile(flags) {
     try {
+      // Read in the data from the file.
       const data = await lib.readFile(flags.name)
-      console.log(`unencrypted data: ${data.toString()}`)
+      // console.log(`unencrypted data: ${data.toString()}`)
 
-      // console.log(crypto.randomBytes(16).toString())
-
+      // Encrypt the data in the file.
       const newData = this.encrypt(data)
-      console.log(`encrypted data: ${newData}`)
+      // console.log(`encrypted data: ${newData}`)
+
+      // Overwrite the exiting file with the encrypted data.
+      lib.saveFile(flags.name, newData)
     } catch (error) {
       console.log('Error in encrypt.js/encryptFile()')
       throw error
@@ -69,9 +72,12 @@ class Encrypt extends Command {
 
     const pass = flags.pass
     if (!pass || pass === '' || process.env.ENCRYPTION_PASSWORD === 'undefined')
-      throw new Error('ENCRYPTION_PASSWORD environment variable or password with the -p flag is required.')
+      throw new Error(
+        'ENCRYPTION_PASSWORD environment variable or password with the -p flag is required.'
+      )
 
-    if (process.env.ENCRYPTION_PASSWORD) ENCRYPTION_PASSWORD = process.env.ENCRYPTION_PASSWORD
+    if (process.env.ENCRYPTION_PASSWORD)
+      ENCRYPTION_PASSWORD = process.env.ENCRYPTION_PASSWORD
     if (pass) ENCRYPTION_PASSWORD = pass
 
     return true
