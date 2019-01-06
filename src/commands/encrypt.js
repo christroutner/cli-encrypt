@@ -1,5 +1,6 @@
 const {Command, flags} = require('@oclif/command')
-var crypto = require('crypto')
+const crypto = require('crypto')
+const lib = require('../util')
 
 let ENCRYPTION_PASSWORD
 
@@ -22,19 +23,15 @@ class Encrypt extends Command {
   // Encrypt a file based on the data passed in with the flags.
   async encryptFile(flags) {
     try {
-      await this.openFile(flags.name)
+      const data = await lib.readFile(flags.name)
+      console.log(`unencrypted data: ${data.toString()}`)
+
+      // console.log(crypto.randomBytes(16).toString())
+
+      const newData = this.encrypt(data)
+      console.log(`encrypted data: ${newData}`)
     } catch (error) {
       console.log('Error in encrypt.js/encryptFile()')
-      throw error
-    }
-  }
-
-  // Read in a file and return the contents.
-  async openFile(filename) {
-    try {
-
-    } catch (error) {
-      console.log('Error in encrypt.js/openFile()')
       throw error
     }
   }
@@ -42,9 +39,20 @@ class Encrypt extends Command {
   // Encrypt and return some data.
   encrypt(data) {
     try {
-      var cipher = crypto.createCipher('aes-256-cbc', ENCRYPTION_PASSWORD)
+      // Generate an initialization vector.
+      const iv = 'abcdefghijklmnop'
+
+      // Hash the password into a 32 byte string.
+      const hash = crypto.createHash('md5')
+      hash.update(ENCRYPTION_PASSWORD)
+      const key = hash.digest('hex')
+      // console.log(`hashed password: ${key}`)
+
+      // Encrypt the input string.
+      var cipher = crypto.createCipheriv('aes-256-cbc', key, iv)
       var crypted = cipher.update(data, 'utf8', 'hex')
       crypted += cipher.final('hex')
+
       return crypted
     } catch (error) {
       console.log('Error in encrypt.js/encrypt()')
