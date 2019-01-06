@@ -32,12 +32,11 @@ USAGE
 <!-- commands -->
 * [`cli-encrypt decrypt`](#cli-encrypt-decrypt)
 * [`cli-encrypt encrypt`](#cli-encrypt-encrypt)
-* [`cli-encrypt hello`](#cli-encrypt-hello)
 * [`cli-encrypt help [COMMAND]`](#cli-encrypt-help-command)
 
 ## `cli-encrypt decrypt`
 
-Describe the command here
+Decrypt a file
 
 ```
 USAGE
@@ -49,14 +48,14 @@ OPTIONS
 
 DESCRIPTION
   ...
-  Extra documentation goes here
+  example: cli-encrypt decrypt -n <filename> -p <password>
 ```
 
 _See code: [src/commands/decrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.0.0/src/commands/decrypt.js)_
 
 ## `cli-encrypt encrypt`
 
-Describe the command here
+Encrypt a file
 
 ```
 USAGE
@@ -68,28 +67,10 @@ OPTIONS
 
 DESCRIPTION
   ...
-  Extra documentation goes here
+  example: cli-encrypt encrypt -n <filename> -p <password>
 ```
 
 _See code: [src/commands/encrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.0.0/src/commands/encrypt.js)_
-
-## `cli-encrypt hello`
-
-Describe the command here
-
-```
-USAGE
-  $ cli-encrypt hello
-
-OPTIONS
-  -n, --name=name  name to print
-
-DESCRIPTION
-  ...
-  Extra documentation goes here
-```
-
-_See code: [src/commands/hello.js](https://github.com/christroutner/cli-encrypt/blob/vv1.0.0/src/commands/hello.js)_
 
 ## `cli-encrypt help [COMMAND]`
 

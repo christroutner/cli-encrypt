@@ -84,9 +84,9 @@ class Encrypt extends Command {
   }
 }
 
-Encrypt.description = `Describe the command here
+Encrypt.description = `Encrypt a file
 ...
-Extra documentation goes here
+example: cli-encrypt encrypt -n <filename> -p <password>
 `
 
 Encrypt.flags = {
