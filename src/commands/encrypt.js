@@ -90,7 +90,7 @@ example: cli-encrypt encrypt -n <filename> -p <password>
 `
 
 Encrypt.flags = {
-  name: flags.string({char: 'n', description: 'name to print'}),
+  name: flags.string({char: 'n', description: 'name of file'}),
   pass: flags.string({char: 'p', description: 'encryption password'}),
 }
 

@@ -43,7 +43,7 @@ USAGE
   $ cli-encrypt decrypt
 
 OPTIONS
-  -n, --name=name  name to print
+  -n, --name=name  name of file
   -p, --pass=pass  encryption password
 
 DESCRIPTION
@@ -62,7 +62,7 @@ USAGE
   $ cli-encrypt encrypt
 
 OPTIONS
-  -n, --name=name  name to print
+  -n, --name=name  name of file
   -p, --pass=pass  encryption password
 
 DESCRIPTION
