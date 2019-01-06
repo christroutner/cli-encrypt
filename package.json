@@ -1,12 +1,12 @@
 {
-  "name": "encrypt-cli",
+  "name": "cli-encrypt",
   "description": "Simple CLI for encrypting files using node.js Crypto library",
   "version": "v1.0.0",
   "author": "Chris Troutner @christroutner",
   "bin": {
-    "encrypt-cli": "./bin/run"
+    "cli-encrypt": "./bin/run"
   },
-  "bugs": "https://github.com/christroutner/encrypt-cli/issues",
+  "bugs": "https://github.com/christroutner/cli-encrypt/issues",
   "dependencies": {
     "@oclif/command": "^1.5.8",
     "@oclif/config": "^1.10.4",
@@ -21,7 +21,8 @@
     "eslint-config-oclif": "^3.1.0",
     "globby": "^8.0.1",
     "mocha": "^5.2.0",
-    "nyc": "^13.1.0"
+    "nyc": "^13.1.0",
+    "semantic-release": "^15.13.2"
   },
   "engines": {
     "node": ">=8.0.0"
@@ -32,7 +33,7 @@
     "/oclif.manifest.json",
     "/src"
   ],
-  "homepage": "https://github.com/christroutner/encrypt-cli",
+  "homepage": "https://github.com/christroutner/cli-encrypt",
   "keywords": [
     "oclif"
   ],
@@ -40,12 +41,12 @@
   "main": "src/index.js",
   "oclif": {
     "commands": "./src/commands",
-    "bin": "encrypt-cli",
+    "bin": "cli-encrypt",
     "plugins": [
       "@oclif/plugin-help"
     ]
   },
-  "repository": "christroutner/encrypt-cli",
+  "repository": "christroutner/cli-encrypt",
   "scripts": {
     "postpack": "rm -f oclif.manifest.json",
     "prepack": "oclif-dev manifest && oclif-dev readme",
