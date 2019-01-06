@@ -4,43 +4,43 @@ const lib = require('../util')
 
 let ENCRYPTION_PASSWORD
 
-class Encrypt extends Command {
+class Decrypt extends Command {
   async run() {
     try {
-      const {flags} = this.parse(Encrypt)
+      const {flags} = this.parse(Decrypt)
 
       // Validate the input arguments are valid before doing any processing.
       this.validateFlags(flags)
 
-      // Encrypt the file.
-      await this.encryptFile(flags)
+      // Decrypt the file.
+      await this.decryptFile(flags)
     } catch (error) {
       if (error.message) this.log(error.message)
       else console.log('Error in UpdateBalances.run: ', error)
     }
   }
 
-  // Encrypt a file based on the data passed in with the flags.
-  async encryptFile(flags) {
+  // Decrypt a file based on the data passed in with the flags.
+  async decryptFile(flags) {
     try {
       // Read in the data from the file.
       const data = await lib.readFile(flags.name)
-      // console.log(`unencrypted data: ${data.toString()}`)
+      // console.log(`encrypted data: ${data.toString()}`)
 
       // Encrypt the data in the file.
-      const newData = this.encrypt(data)
-      // console.log(`encrypted data: ${newData}`)
+      const newData = this.decrypt(data.toString())
+      // console.log(`decrypted data: ${newData}`)
 
       // Overwrite the exiting file with the encrypted data.
       await lib.saveFile(flags.name, newData)
     } catch (error) {
-      console.log('Error in encrypt.js/encryptFile()')
+      console.log('Error in encrypt.js/decryptFile()')
       throw error
     }
   }
 
   // Encrypt and return some data.
-  encrypt(data) {
+  decrypt(data) {
     try {
       // Generate an initialization vector.
       const iv = 'abcdefghijklmnop'
@@ -52,13 +52,13 @@ class Encrypt extends Command {
       // console.log(`hashed password: ${key}`)
 
       // Encrypt the input string.
-      var cipher = crypto.createCipheriv('aes-256-cbc', key, iv)
-      var crypted = cipher.update(data, 'utf8', 'hex')
-      crypted += cipher.final('hex')
+      var decipher = crypto.createDecipheriv('aes-256-cbc', key, iv)
+      var decrypted = decipher.update(data, 'hex', 'utf8')
+      decrypted += decipher.final('utf8')
 
-      return crypted
+      return decrypted
     } catch (error) {
-      console.log('Error in encrypt.js/encrypt()')
+      console.log('Error in encrypt.js/decrypt()')
       throw error
     }
   }
@@ -84,14 +84,14 @@ class Encrypt extends Command {
   }
 }
 
-Encrypt.description = `Describe the command here
+Decrypt.description = `Describe the command here
 ...
 Extra documentation goes here
 `
 
-Encrypt.flags = {
+Decrypt.flags = {
   name: flags.string({char: 'n', description: 'name to print'}),
   pass: flags.string({char: 'p', description: 'encryption password'}),
 }
 
-module.exports = Encrypt
+module.exports = Decrypt
