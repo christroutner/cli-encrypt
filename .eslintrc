@@ -1,3 +1,7 @@
 {
-  "extends": "oclif"
+  "extends": "oclif",
+  "rules": {
+    "no-negated-condition": 0,
+    "no-console": 0
+  }
 }

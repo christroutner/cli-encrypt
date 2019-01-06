@@ -1,7 +1,8 @@
 encrypt-cli
 ===========
 
-Simple CLI for encrypting files using node.js Crypto library
+Simple CLI for encrypting files using node.js Crypto library.
+Inspired by [crypto-cli](https://github.com/jordanpatton/crypto-cli).
 
 [![oclif](https://img.shields.io/badge/cli-oclif-brightgreen.svg)](https://oclif.io)
 [![Version](https://img.shields.io/npm/v/encrypt-cli.svg)](https://npmjs.org/package/encrypt-cli)
