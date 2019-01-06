@@ -52,6 +52,7 @@
     "test": "nyc mocha \"test/**/*.test.js\"",
     "version": "oclif-dev readme && git add README.md",
     "coverage": "nyc report --reporter=text-lcov | coveralls",
-    "coverage:report": "nyc --reporter=html mocha"
+    "coverage:report": "nyc --reporter=html mocha",
+    "semantic-release": "semantic-release"
   }
 }
