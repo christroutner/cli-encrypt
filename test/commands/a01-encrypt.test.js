@@ -68,7 +68,7 @@ describe('encrypt', () => {
       assert.equal(result, 'ea9a985e2d0082f9f2fbff97bed6c14c')
     })
   })
-
+/*
   describe('encryptFile()', () => {
     it('should encrypt data in the test file', async () => {
       const flags = {
@@ -80,4 +80,5 @@ describe('encrypt', () => {
       await encrypt.encryptFile(flags)
     })
   })
+*/
 })
