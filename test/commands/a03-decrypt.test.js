@@ -4,7 +4,7 @@
 'use strict'
 
 const assert = require('chai').assert
-const Encrypt = require('../../src/commands/encrypt')
+const Decrypt = require('../../src/commands/decrypt')
 
 // Inspect utility used for debugging.
 const util = require('util')
@@ -14,12 +14,12 @@ util.inspect.defaultOptions = {
   depth: 1,
 }
 
-describe('encrypt', () => {
+describe('decrypt', () => {
   describe('validateFlags()', () => {
     it('should throw error if filename is not supplied', async () => {
       try {
-        const encrypt = new Encrypt()
-        await encrypt.validateFlags({})
+        const decrypt = new Decrypt()
+        await decrypt.validateFlags({})
       } catch (error) {
         assert.include(
           error.message,
@@ -29,10 +29,10 @@ describe('encrypt', () => {
       }
     })
 
-    it('should throw error if ENCRYPTION_PASSWORD is not specified', async () => {
+    it('should throw error if ENCRYPION_PASSWORD is not specified', async () => {
       try {
-        const encrypt = new Encrypt()
-        await encrypt.validateFlags({name: 'test'})
+        const decrypt = new Decrypt()
+        await decrypt.validateFlags({name: 'test'})
       } catch (error) {
         // console.log(error)
         assert.include(
@@ -49,35 +49,35 @@ describe('encrypt', () => {
         pass: 'test',
       }
 
-      const encrypt = new Encrypt()
-      const result = encrypt.validateFlags(obj)
+      const decrypt = new Decrypt()
+      const result = decrypt.validateFlags(obj)
 
       assert.equal(result, true)
     })
   })
 
-  describe('encrypt()', () => {
-    it('should return an encrypted string', () => {
-      const data = 'test data'
+  describe('decrypt()', () => {
+    it('should return an decrypted string', () => {
+      const data = 'ea9a985e2d0082f9f2fbff97bed6c14c'
 
-      const encrypt = new Encrypt()
+      const decrypt = new Decrypt()
 
-      const result = encrypt.encrypt(data)
+      const result = decrypt.decrypt(data)
       // console.log(`result: ${result}`)
 
-      assert.equal(result, 'ea9a985e2d0082f9f2fbff97bed6c14c')
+      assert.equal(result, 'test data')
     })
   })
 /*
-  describe('encryptFile()', () => {
-    it('should encrypt data in the test file', async () => {
+  describe('decryptFile()', () => {
+    it('should decrypt data in the test file', async () => {
       const flags = {
         name: 'testfile.txt',
       }
 
-      const encrypt = new Encrypt()
+      const decrypt = new Decrypt()
 
-      await encrypt.encryptFile(flags)
+      await decrypt.decryptFile(flags)
     })
   })
 */
