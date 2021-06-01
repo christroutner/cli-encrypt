@@ -1,7 +1,7 @@
 {
   "name": "cli-encrypt",
   "description": "Simple CLI for encrypting files using node.js Crypto library",
-  "version": "v1.0.0",
+  "version": "v1.0.6",
   "author": "Chris Troutner @christroutner",
   "bin": {
     "cli-encrypt": "./bin/run"
