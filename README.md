@@ -45,6 +45,7 @@ USAGE
   $ cli-encrypt decrypt
 
 OPTIONS
+  -b, --binary     Signals the input is a binary file
   -n, --name=name  name of file
   -p, --pass=pass  encryption password
 
@@ -64,6 +65,7 @@ USAGE
   $ cli-encrypt encrypt
 
 OPTIONS
+  -b, --binary     Signals the input is a binary file
   -n, --name=name  name of file
   -p, --pass=pass  encryption password
 
