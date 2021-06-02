@@ -28,7 +28,7 @@ class Encrypt extends Command {
       // console.log(`unencrypted data: ${data.toString()}`)
 
       // Encrypt the data in the file.
-      const newData = this.encrypt(data)
+      const newData = this.encrypt(data, flags.binary)
       // console.log(`encrypted data: ${newData}`)
 
       // Overwrite the exiting file with the encrypted data.
@@ -40,7 +40,7 @@ class Encrypt extends Command {
   }
 
   // Encrypt and return some data.
-  encrypt(data) {
+  encrypt(data, isBinary = false) {
     try {
       // Generate an initialization vector.
       const iv = 'abcdefghijklmnop'
@@ -50,6 +50,11 @@ class Encrypt extends Command {
       hash.update(ENCRYPTION_PASSWORD)
       const key = hash.digest('hex')
       // console.log(`hashed password: ${key}`)
+
+      // If the file is binary, convert it to a hexidecimal string.
+      if (isBinary) {
+        data = data.toString('hex')
+      }
 
       // Encrypt the input string.
       var cipher = crypto.createCipheriv('aes-256-cbc', key, iv)
@@ -92,6 +97,10 @@ example: cli-encrypt encrypt -n <filename> -p <password>
 Encrypt.flags = {
   name: flags.string({char: 'n', description: 'name of file'}),
   pass: flags.string({char: 'p', description: 'encryption password'}),
+  binary: flags.boolean({
+    char: 'b',
+    description: 'Signals the input is a binary file',
+  }),
 }
 
 module.exports = Encrypt
