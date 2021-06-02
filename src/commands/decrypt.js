@@ -28,8 +28,13 @@ class Decrypt extends Command {
       // console.log(`encrypted data: ${data.toString()}`)
 
       // Encrypt the data in the file.
-      const newData = this.decrypt(data.toString())
+      let newData = this.decrypt(data.toString())
       // console.log(`decrypted data: ${newData}`)
+
+      // If binary, convert the decrypted hex into a binary Buffer.
+      if (flags.binary) {
+        newData = Buffer.from(newData, 'hex')
+      }
 
       // Overwrite the exiting file with the encrypted data.
       await lib.saveFile(flags.name, newData)
@@ -92,6 +97,10 @@ example: cli-encrypt decrypt -n <filename> -p <password>
 Decrypt.flags = {
   name: flags.string({char: 'n', description: 'name of file'}),
   pass: flags.string({char: 'p', description: 'encryption password'}),
+  binary: flags.boolean({
+    char: 'b',
+    description: 'Signals the input is a binary file',
+  }),
 }
 
 module.exports = Decrypt
