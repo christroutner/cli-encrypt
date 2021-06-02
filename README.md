@@ -23,7 +23,7 @@ $ npm install -g cli-encrypt
 $ cli-encrypt COMMAND
 running command...
 $ cli-encrypt (-v|--version|version)
-cli-encrypt/v1.0.6 linux-x64 node-v14.17.0
+cli-encrypt/v1.1.0 linux-x64 node-v14.17.0
 $ cli-encrypt --help [COMMAND]
 USAGE
   $ cli-encrypt COMMAND
@@ -54,7 +54,7 @@ DESCRIPTION
   example: cli-encrypt decrypt -n <filename> -p <password>
 ```
 
-_See code: [src/commands/decrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.0.6/src/commands/decrypt.js)_
+_See code: [src/commands/decrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.1.0/src/commands/decrypt.js)_
 
 ## `cli-encrypt encrypt`
 
@@ -74,7 +74,7 @@ DESCRIPTION
   example: cli-encrypt encrypt -n <filename> -p <password>
 ```
 
-_See code: [src/commands/encrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.0.6/src/commands/encrypt.js)_
+_See code: [src/commands/encrypt.js](https://github.com/christroutner/cli-encrypt/blob/vv1.1.0/src/commands/encrypt.js)_
 
 ## `cli-encrypt help [COMMAND]`
 
